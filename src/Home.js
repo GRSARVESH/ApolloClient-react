@@ -2,6 +2,8 @@ import { useLazyQuery } from '@apollo/client';
 import React, { useState } from "react";
 import {GET_WEATHER_QUERY} from './graphql/Query'
 import Cards from './Cards'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 function Home() {
     const[selected,setSelected]=useState("Italy")
@@ -10,7 +12,7 @@ function Home() {
     if(error)return <h1>error</h1>
   return (
     <div className="flex flex-col justify-center items-center">
-      <p className="text-5xl">Search the City for weather</p>
+      <p className="text-5xl text-black-400">Search the City for weather</p>
       <input
         type="text"
         placeholder="Enter City Name..."
@@ -24,7 +26,10 @@ function Home() {
       <div className="weather">
         {data && data.getCityByName?(
           <Cards name={data.getCityByName.name} temp={data.getCityByName.weather.temperature.actual} desc={data.getCityByName.weather.summary.description} wind={data.getCityByName.weather.wind.speed}/>
-        ):!loading && selected?(<h1>CITY NOT THERE</h1>):loading?(<h1>Loading...</h1>):(<></>)}
+        ):!loading && selected?(<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoM_54x8SXKwr3p-g6pBWqBUcW6KPWnqUCEYQAe82K5_NuX-fM-y5C-og_QKRleaZCtas&usqp=CAU" 
+        className="absolute top-1/2 left-1/2 h-300 w-300 transform -translate-x-1/2 -translate-y-1/2"/>)
+        :loading?(<Loader type="ThreeDots" color="#00BFFF" height={100} width={100} />):
+        (<></>)}
       </div>
     </div>
   );
