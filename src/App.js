@@ -12,7 +12,7 @@ function App() {
   });
   return (
     <ApolloProvider client={client}>
-    <div className="App">
+    <div className="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-600 ... h-screen">
       <Home/>
     </div>
     </ApolloProvider>

@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    width: 450,
+    width: 340,
     backgroundColor: "lightblue"
   },
   media: {
@@ -37,10 +37,10 @@ export default function Cards({name,temp,desc,wind}) {
             color="secondary"
             component="h2"
           >
-            Temperature:{temp}
+            Temperature:{temp}°F
           </Typography>
           <Typography variant="h6" color="secondary" component="p">
-            Description{desc}
+            Description:{desc}
           </Typography>
           <Typography variant="h6" color="secondary" component="p">
             Wind Speed:{wind}
